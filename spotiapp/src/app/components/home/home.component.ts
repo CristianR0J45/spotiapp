@@ -23,9 +23,13 @@ export class HomeComponent implements OnInit {
 
   // }
 
+
   loading:boolean;
   home:boolean=true;
   nuevasCanciones:any[]=[];
+  error:boolean=false;
+  mensajeError:string;
+
   constructor(private spotify:SpotifyService){
     this.loading=true;
     this.spotify.getNewReleases()
@@ -33,6 +37,12 @@ export class HomeComponent implements OnInit {
       
       this.nuevasCanciones=data;
       this.loading=false;
+      this.error=false;
+
+    }, (errorServicio)=>{
+      this.error=true;
+      this.loading=false;
+      this.mensajeError= errorServicio.error.error.message;
     });
   }
 
