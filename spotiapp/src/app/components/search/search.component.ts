@@ -8,6 +8,7 @@ import { SpotifyService } from '../../services/spotify.service';
 })
 export class SearchComponent implements OnInit {
   artistas:any[]=[];
+  loading:boolean;
   constructor(private spotify:SpotifyService) {
     
    }
@@ -17,11 +18,13 @@ export class SearchComponent implements OnInit {
 
   // busca apartir de las letras ingresadas
   buscar(termino:string){
-    console.log(termino);
-    this.spotify.getArtista(termino)
+
+    this.loading=true;
+    this.spotify.getArtistas(termino)
     .subscribe((data:any)=>{
-      console.log(data.artists.items);
-      this.artistas=data.artists.items;
+
+      this.artistas=data;
+      this.loading=false;
     });
 
   }

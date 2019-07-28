@@ -1,0 +1,16 @@
+<div  class="card-columns animated fadeIn mt-3">
+    <div (click)="varArtista(item)" *ngFor = "let item of items" class="card puntero">
+      <img [src]="item.images | noimagen" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">
+            {{item.name}}
+        </h5>
+        <div >
+            <p class="card-text">Total de canciones: <strong>{{item.total_tracks}}</strong></p>
+            <p class="card-text">{{item.release_date}}</p>
+            <span *ngFor="let artista of item.artists" class="badge badge-pill badge-success">{{artista.name}}</span>
+        </div>
+        
+      </div>
+    </div>
+</div>

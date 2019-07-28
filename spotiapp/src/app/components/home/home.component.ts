@@ -23,12 +23,16 @@ export class HomeComponent implements OnInit {
 
   // }
 
+  loading:boolean;
+  home:boolean=true;
   nuevasCanciones:any[]=[];
   constructor(private spotify:SpotifyService){
+    this.loading=true;
     this.spotify.getNewReleases()
     .subscribe((data:any)=>{
-      console.log(data.albums.items);
-      this.nuevasCanciones=data.albums.items;
+      
+      this.nuevasCanciones=data;
+      this.loading=false;
     });
   }
 
