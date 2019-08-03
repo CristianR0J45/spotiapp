@@ -5,7 +5,7 @@
         <h5 class="card-title">
             {{item.name}}
         </h5>
-        <div >
+        <div *ngIf="item.total_tracks != null" >
             <p class="card-text">Total de canciones: <strong>{{item.total_tracks}}</strong></p>
             <p class="card-text">{{item.release_date}}</p>
             <span *ngFor="let artista of item.artists" class="badge badge-pill badge-success">{{artista.name}}</span>

@@ -1,20 +1,29 @@
 
 <div class="row animated fadeIn " *ngIf="!loading">
-  <div class="col-2">
-    <img [src]="artista.images | noimagen" class="img-thumbanail img-circle" alt="">
+  <div class="col-md-3 col-12 text-center">
+    <a [href]="artista.external_urls.spotify" target="_blank" >
+      <img [src]="artista.images | noimagen" class="img-thumbanail img-circle" alt="">
+    </a>
+
   </div>
-  <div class="col">
+  <div class="col-md col-6 mt-3 mb-3 ">
     <h3>{{artista.name}}</h3>
-    <a [href]="artista.external_urls.spotify" target="_blank" >Ir a la página del artista</a>
+    
   </div>
-  <div class="col-4 text-right"> 
-    <button routerLink="/search" class="btn btn-outline-danger">
-        Regresar
-    </button>
+  <div class="col-md-3 col-6 mt-3 mb-3 text-right"> 
+    <button routerLink="/search" class="btn btn-outline-danger">Regresar</button>
   </div>
 </div>
 
-<div class="row m-5 ">
+<!-- Targeta para celular -->
+<div  *ngFor="let item of topTracks"  class=" d-block d-md-none mt-1 text-center">
+    <iframe [src] = "item.id | domseguro:'https://open.spotify.com/embed/track/'" width="280" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+
+    
+</div>
+
+
+<div class="row mt-5  d-none d-md-block">
   <div class="col">
     <table class="table text-white">
       <thead>
